@@ -1,3 +1,4 @@
+import 'package:clint_ledger/pages/pagelogout.dart';
 import 'package:clint_ledger/widgets/ClientCard.dart';
 import 'package:clint_ledger/widgets/WelcomeCard.dart';
 import 'package:flutter/material.dart';
@@ -38,18 +39,27 @@ class _HomePageState extends State<HomePage> {
         child: const Icon(Icons.add, size: 28, color: Colors.white),
       ),
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title: const Text(
-          "العملاء",
-          style: TextStyle(
-            color: Color(0xff073c69),
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
+          elevation: 0,
+          backgroundColor: Colors.white,
+          title: const Text(
+            "العملاء",
+            style: TextStyle(
+              color: Color(0xff073c69),
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
           ),
-        ),
-        centerTitle: true,
-      ),
+          centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  showLogoutDialog(context);
+                },
+                icon: Icon(
+                  Icons.logout,
+                  color: Color(0xff073c69),
+                ))
+          ]),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

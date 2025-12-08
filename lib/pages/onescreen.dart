@@ -1,5 +1,7 @@
 import 'package:clint_ledger/pages/authpage.dart';
+import 'package:clint_ledger/pages/home.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Onescreen extends StatefulWidget {
   const Onescreen({super.key});
@@ -13,8 +15,21 @@ class _OnescreenState extends State<Onescreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => AuthPage()));
+      final user = Supabase.instance.client.auth.currentUser;
+
+      if (user == null) {
+        // إذا ما في تسجيل دخول
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const AuthPage()),
+        );
+      } else {
+        // المستخدم مسجّل دخول
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const HomePage()),
+        );
+      }
     });
   }
 

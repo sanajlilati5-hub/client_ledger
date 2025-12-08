@@ -21,12 +21,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/",
+      initialRoute: "screen",
       routes: {
+        "screen": (context) => const Onescreen(),
         "/": (context) => const HomePage(),
         "/add-client": (context) => const AddClientPage(),
       },
     );
-    ;
   }
 }
